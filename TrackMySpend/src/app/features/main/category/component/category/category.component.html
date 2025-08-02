@@ -1,1 +1,31 @@
-<p>category works!</p>
+<div class="container">
+<h2>Category Management</h2>
+
+<form [formGroup]="categoryForm" class="categoryForm" >
+  <div><input type="text" placeholder="Enter category name" formControlName="categoryName" />
+  </div>
+    <div><button type="submit" class="login_btn btn btn-primary" (click)="addCategory()">Add Category</button>
+</div></form>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Category Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cat of categories; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ cat.categoryName }}</td>
+      <td>
+        <button (click)="editCategory()">Edit</button>
+        <button (click)="deleteCategory()">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+</div>
