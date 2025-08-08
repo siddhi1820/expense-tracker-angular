@@ -6,26 +6,14 @@
   </div>
     <div><button type="submit" class="login_btn btn btn-primary" (click)="addCategory()">Add Category</button>
 </div></form>
+{{message}}
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Category Name</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let cat of categories; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td>{{ cat.categoryName }}</td>
-      <td>
-        <button (click)="editCategory()">Edit</button>
-        <button (click)="deleteCategory()">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
+<button (click)="viewCategory()">categories</button>
+<div class="categorySection">
+  <h3>Categories</h3>
+  <div class="categories">
+    <div class="category-box" *ngFor="let i of categories">
+      <button>{{ i.categoryName }}</button>
+    </div>
+  </div>
 </div>

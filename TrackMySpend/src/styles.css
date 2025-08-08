@@ -1,7 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
-.login_btn{
-   height: 35px;
-   width: 100px;
-   border-radius: 5px;
-   padding: 1px;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; 
 }
+
+h1{
+   color: pink;
+}
+/* For all toastr messages */
+
+/* Full-width toast styles */
+.toast-top-full-width {
+  top: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.full-width-toast {
+  width: 100% !important;
+  border-radius: 0 !important;
+  text-align: center;
+  padding: 15px !important;
+  background-color: #2b9b2b !important; /* Optional: dark background */
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { RegisterService } from '../service/register.service';
 
 @Component({
   selector: 'app-register',
@@ -9,12 +10,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class RegisterComponent {
   registerForm:FormGroup;
-constructor(){
+constructor(private registerService:RegisterService){
   this.registerForm=new FormGroup({
     name:new FormControl(null),
     email:new FormControl(null),
     password:new FormControl(null),
-    confirmPassword:new FormControl(null),
+   
 
   })
 }
@@ -27,10 +28,17 @@ public get email(){
 public get password(){
   return this.registerForm?.get('password');
 } 
-public get confirmPassword(){
-  return this.registerForm?.get('confirmPassword');
-} 
+
 onRegister(){
-  console.log(this.registerForm?.value);
+ return this.registerService.getRegister(this.registerForm?.value).subscribe({
+  next:(res:any)=>{
+    if(res){
+      console.log(res?.message);
+     
+    }
+  },error(error){
+    console.log(error.message);
+  }
+ });
 }
 }

@@ -1,10 +1,25 @@
-<p>dashboard works!</p>
-<h2>Expense Overview</h2>
-<div class="chart">
-<canvas 
-  baseChart
-  [data]="barChartData"
-  [options]="barChartOptions"
-  [type]="'pie'">
-</canvas>
+<div class="nav">
+  <h4 class="user">Welcome {{ message }}</h4>
 </div>
+
+<div class="content">
+  <div class="sidebar">
+    <div class="section" (click)="showSection('home')">Home</div>
+    <div class="section" (click)="showSection('addExpense')">Add Expense</div>
+    <div class="section" (click)="showSection('viewExpense')">View Expense</div>
+    <div class="section" (click)="showSection('addCategory')">Add Category</div>
+    <div class="section" (click)="showSection('trackExpense')">Track Expense</div>
+    <div class="section" (click)="showSection('logout')">Log Out</div>
+  </div>
+
+  <div class="main">
+    <div *ngIf="currentSection === 'home'">Welcome Home</div>
+    <app-expense *ngIf="currentSection === 'addExpense'"></app-expense>
+      <app-category *ngIf="currentSection === 'addCategory'"></app-category>
+          <app-view-expense *ngIf="currentSection === 'viewExpense'"></app-view-expense>
+          <app-track-expense *ngIf="currentSection === 'trackExpense'"></app-track-expense>
+   
+    <div *ngIf="currentSection === 'logout'">You are logged out.</div>
+  </div>
+</div>
+

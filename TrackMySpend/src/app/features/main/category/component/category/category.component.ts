@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CategoryService } from '../../service/category.service';
+import { CommonApiService } from '../../../../../core/services/common-api.service';
 
 @Component({
   selector: 'app-category',
@@ -10,8 +12,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class CategoryComponent {
 categoryForm:FormGroup;
-categories:any=[];
-constructor(){
+message:any;
+categories:any;
+constructor(private categoryService:CategoryService,private commonService:CommonApiService){
   this.categoryForm=new FormGroup({
     categoryName:new FormControl(null)
   })
@@ -20,13 +23,28 @@ public get category(){
   return this.categoryForm?.get('categoryName')
 }
 addCategory(){
-  console.log(`Category Added Sucessfully.`)
-  this.categories.push(this.categoryForm?.value);
-}
-editCategory(){
+ this.categoryService.addCategory(this.categoryForm?.value).subscribe({
+  next:(res:any)=>{
+    if(res){
+     this.message=res?.message;
+    }
+   
+  },error(err) {
+      console.log(err);
+  },
+ })
+  
 
 }
-deleteCategory(){
-  
+viewCategory(){
+  this.commonService.viewCategory().subscribe({
+    next:(res:any)=>{
+      if(res){
+        this.categories=res?.data?.categorName;
+      }
+    },error(err) {
+        console.log(err);
+    },
+  })
 }
 }

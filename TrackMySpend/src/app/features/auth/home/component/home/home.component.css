@@ -1,0 +1,16 @@
+.nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(236, 155, 62);
+   
+}
+.btn{
+    border-radius: 5px;
+    border-color:none;
+    background-color: wheat;
+}
+.top-button{
+    display: flex;
+    gap: 5px;
+}
